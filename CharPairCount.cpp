@@ -3,24 +3,39 @@
 #include <string>
 #include <array>
 
-int main() {
+#define PAIR_SIZE 2 
 
-    // std::array<unsigned char, 26*26> charPairCounts{0};
+int main(){
 
-    std::ifstream file("wordlist.txt");
+    std::array<unsigned int, 26*26> charPairCounts{0};
 
-    if (!file.is_open()) {
+    std::ifstream file("wordlistNoSpecials.txt");
+
+    if(!file.is_open()){
         std::cerr << "Error opening the file." << std::endl;
         return 1;
     }
 
-    std::string line;
-    while (std::getline(file, line)) {
-        // Process the current line here
-        std::cout << line << '\n'; // Example: Printing the line
+    std::string word;
+    while(std::getline(file, word)){ 
+        if(word.length() < PAIR_SIZE){
+            continue;
+        }
+        for(int i = 1; i < word.length()-1; i++){
+            unsigned char charValue1 = word[i-1] - 'a';
+            unsigned char charValue2 = word[i] - 'a';
+            unsigned short pairIndex = (charValue1 * 26) + charValue2;
+            if(pairIndex > 26*26){
+                printf("%s%s", word[i-1], word[i]);
+            }
+            charPairCounts[pairIndex]++;
+        }
     }
-
     file.close();
+
+    for(int i=0; i < charPairCounts.size(); i++){
+        printf("%d: %d\n", i, charPairCounts[i]);
+    }
 
     return 0;
 }
