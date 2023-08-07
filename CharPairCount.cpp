@@ -32,7 +32,7 @@ int main(){
         if(word.length() < PAIR_SIZE){
             continue;
         }
-        for(int i = 1; i < word.length()-1; i++){
+        for(int i = 1; i < word.length(); i++){
             unsigned char charValue1 = word[i-1] - 'a';
             unsigned char charValue2 = word[i] - 'a';
             unsigned short pairIndex = (charValue1 * 26) + charValue2;
