@@ -34,7 +34,9 @@ int main(){
     file.close();
 
     for(int i=0; i < charPairCounts.size(); i++){
-        printf("%d: %d\n", i, charPairCounts[i]);
+        unsigned char charValue1 = i/26;
+        unsigned char charValue2 = i - charValue1*26;
+        printf("%d:%c%c: %d\n", i+1, charValue1+'a', charValue2+'a', charPairCounts[i]);
     }
 
     return 0;
