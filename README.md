@@ -8,6 +8,10 @@ This was written to be somewhat efficient. To achieve this, it builds out the mi
 
 When tested with 300,000 unique English words, it would take less than a second when piped to a file. These are the results for the character counts for anyone interested. 
 
+
+
+IndexValue-CharacterPairt-Count
+
 Sorted by occurance
 122-er-55514
 222-in-46754
